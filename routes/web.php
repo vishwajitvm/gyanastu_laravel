@@ -1,5 +1,5 @@
 <?php
-
+//Profile management of user and admin
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\UserController;
@@ -7,9 +7,15 @@ use App\Http\Controllers\backend\ProfileController;
 use App\Http\Controllers\userdashboardController ;
 use App\Http\Controllers\userProfileController ;
 use Illuminate\Support\Facades\Auth ;
-
+//models
 use App\Models\User ;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\board ;
+use App\Models\medium ;
+//admin Controller
+use App\Http\Controllers\admin\ManageManageBoardsController ;
+use App\Http\Controllers\admin\ManageMediumController ;
+use App\Http\Controllers\admin\ManageSubjectController ;
 
 
 
@@ -119,6 +125,62 @@ Route::prefix('profile')->group(function() {
 
     Route::post('/password/update' , [ProfileController::class , 'PasswordUpdate'])->name('password.update') ;   
 }) ;
+
+//
+//MANAGE BOARDS
+//
+Route::prefix('admin-board')->group(function() {
+    //add boards
+    Route::get('/add' , [ManageManageBoardsController::class , 'AddBoardController'])->name('admin-board.add') ; 
+
+    //store board name
+    Route::post('/store' , [ManageManageBoardsController::class , 'StoreBoardController'])->name('admin-board.store') ; 
+
+    //view
+    Route::get('/view' , [ManageManageBoardsController::class , 'ViewBoardController'])->name('admin-board.view') ; 
+
+    //delete
+    Route::get('/delete/{id}' , [ManageManageBoardsController::class , 'DeleteBoardController'])->name('admin-board.delete') ; 
+}) ;
+
+//
+//MANAGE MEDIUM\
+//
+Route::prefix('admin-medium')->group(function() {
+    //add medium
+    Route::get('/add' , [ManageMediumController::class , 'addMediumController'])->name('admin-medium.add') ; 
+
+    //store
+    Route::post('/store' , [ManageMediumController::class , 'StoreMediumController'])->name('admin-medium.store') ; 
+
+    //view
+    Route::get('/view' , [ManageMediumController::class , 'ViewMediumController'])->name('admin-medium.view') ; 
+
+    //delete
+    Route::get('/delete/{id}' , [ManageMediumController::class , 'DeleteMediumController'])->name('admin-medium.delete') ; 
+
+}) ;
+
+//
+//MANAGE SUBJECTS
+//
+Route::prefix('admin-subject')->group(function() {
+    //add subject
+    Route::get('/add' , [ManageSubjectController::class , 'addSubjectController'])->name('admin-subject.add') ; 
+
+    //store
+    Route::post('/store' , [ManageSubjectController::class , 'StoreSubjectController'])->name('admin-subject.store') ; 
+
+    //view
+    Route::get('/view' , [ManageSubjectController::class , 'viewSubjectController'])->name('admin-subject.view') ; 
+
+    //delete 
+    Route::get('/delete/{id}' , [ManageSubjectController::class , 'DeleteSubjectController'])->name('admin-subject.delete') ; 
+
+}) ;
+
+
+
 
 
 

@@ -59,8 +59,48 @@
           </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/admin-board')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Board</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ Route('admin-board.add') }}"><i class="ti-more"></i>Add Board</a></li>
+            <li><a href="{{ Route('admin-board.view') }}"><i class="ti-more"></i>View Board</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview {{ ($prefix == '/admin-medium')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Medium</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ Route('admin-medium.add') }}"><i class="ti-more"></i>Add Medium</a></li>
+            <li><a href="{{ Route('admin-medium.view') }}"><i class="ti-more"></i>View Medium</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview {{ ($prefix == '/admin-subject')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Subjects</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ Route('admin-subject.add') }}"><i class="ti-more"></i>Add Subject</a></li>
+            <li><a href="{{Route('admin-subject.view') }} "><i class="ti-more"></i>View Subject</a></li>
+          </ul>
+        </li>
 
 
+
+        
 
         {{-- <li class="treeview">
           <a href="#">

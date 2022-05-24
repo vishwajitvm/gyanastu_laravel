@@ -98,6 +98,20 @@
           </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/admin-center')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Centers</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ Route('admin-center.add') }}"><i class="ti-more"></i>Add Center</a></li>
+            <li><a href="{{ Route('admin-center.view') }}"><i class="ti-more"></i>View Center</a></li>
+          </ul>
+        </li>
+
+
 
 
         

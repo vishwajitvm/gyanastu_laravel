@@ -16,7 +16,7 @@ use App\Models\medium ;
 use App\Http\Controllers\admin\ManageManageBoardsController ;
 use App\Http\Controllers\admin\ManageMediumController ;
 use App\Http\Controllers\admin\ManageSubjectController ;
-
+use App\Http\Controllers\admin\ManageCentersController ;
 
 
 /*
@@ -178,6 +178,26 @@ Route::prefix('admin-subject')->group(function() {
     Route::get('/delete/{id}' , [ManageSubjectController::class , 'DeleteSubjectController'])->name('admin-subject.delete') ; 
 
 }) ;
+
+//
+//MANAGE CENTERS 
+//
+Route::prefix('admin-center')->group(function() {
+    //add
+    Route::get('/add' , [ManageCentersController::class , 'AddCenterController'])->name('admin-center.add') ; 
+
+    //store
+    Route::post('/store' , [ManageCentersController::class , 'StoreCenterController'])->name('admin-center.store') ; 
+
+    //view
+    Route::get('/view' , [ManageCentersController::class , 'ViewCenterController'])->name('admin-center.view') ; 
+
+    //delete
+    Route::get('/delete/{id}' , [ManageCentersController::class , 'DeleteCenterController'])->name('admin-center.delete') ; 
+
+
+}) ;
+
 
 
 

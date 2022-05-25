@@ -17,7 +17,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Medium List</h3>
+                <h3 class="box-title">Stream List</h3>
                 <a href=" {{ route('admin-stream.add') }} " class="btn btn-rounded btn-success md-5" style="float: right"> Add Stream </a>
               </div>
               <!-- /.box-header -->

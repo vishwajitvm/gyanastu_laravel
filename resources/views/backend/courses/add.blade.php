@@ -12,7 +12,7 @@
             <!-- Basic Forms -->
              <div class="box">
                <div class="box-header with-border">
-                 <h4 class="box-title">Add Board</h4>
+                 <h4 class="box-title">Add Course</h4>
                  <a href=" {{ route('admin-board.view') }} " class="btn btn-rounded btn-success md-5" style="float: right"> View Board </a>
 
                </div>

@@ -48,7 +48,7 @@
 		  
         <li class="treeview {{ ($prefix == '/profile')?'active':'' }}">
           <a href="#">
-            <i data-feather="mail"></i> <span>Manage Profile</span>
+            <i data-feather="user"></i> <span>Manage Profile</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
@@ -58,6 +58,9 @@
             <li><a href=" {{Route('password.view')}} "><i class="ti-more"></i>Change Password</a></li>
           </ul>
         </li>
+
+        <li class="header nav-small-cap text-uppercase">manage basic details</li>		  
+
 
         <li class="treeview {{ ($prefix == '/admin-board')?'active':'' }}">
           <a href="#">
@@ -85,6 +88,20 @@
           </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/admin-stream')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Stream</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ Route('admin-stream.add') }}"><i class="ti-more"></i>Add Stream</a></li>
+            <li><a href="{{ Route('admin-stream.view') }}"><i class="ti-more"></i>View Stream</a></li>
+          </ul>
+        </li>
+
+
         <li class="treeview {{ ($prefix == '/admin-subject')?'active':'' }}">
           <a href="#">
             <i data-feather="mail"></i> <span>Manage Subjects</span>
@@ -111,21 +128,21 @@
           </ul>
         </li>
 
-        <li class="treeview {{ ($prefix == '/admin-stream')?'active':'' }}">
-          <a href="#">
-            <i data-feather="mail"></i> <span>Manage Stream</span>
+        <li class="header nav-small-cap text-uppercase">manage courses</li>		  
+
+
+        <li class="treeview {{ ($prefix == '/admin-course')?'active':'' }}">
+          <a href="javascript:void(0)">
+            <i data-feather="book"></i> <span>Manage Courses</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ Route('admin-stream.add') }}"><i class="ti-more"></i>Add Stream</a></li>
-            <li><a href="{{ Route('admin-stream.view') }}"><i class="ti-more"></i>View Stream</a></li>
+            <li><a href="{{ Route('admin-course.add') }}"><i class="ti-more"></i>Add Course</a></li>
+            <li><a href="mailbox_compose.html"><i class="ti-more"></i>View Course</a></li>
           </ul>
         </li>
-
-
-
 
         
 

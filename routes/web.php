@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\ManageMediumController ;
 use App\Http\Controllers\admin\ManageSubjectController ;
 use App\Http\Controllers\admin\ManageCentersController ;
 use App\Http\Controllers\admin\ManageStreamController ;
+use App\Http\Controllers\admin\ManageCOURSESAdminController ;
 
 
 /*
@@ -216,6 +217,20 @@ Route::prefix('admin-stream')->group(function() {
     Route::get('/delete/{id}' , [ManageStreamController::class , 'DeleteStreamController'])->name('admin-stream.delete') ; 
 
 }) ;
+
+//
+//MANAGE COURSES HERE**************
+//
+Route::prefix('admin-course')->group(function() {
+    //add course here 
+    Route::get('/add' , [ManageCOURSESAdminController::class , 'AddCourse'])->name('admin-course.add') ; 
+
+}) ;
+
+//AJAX REQUEST FOR STATE CENTER DATA 
+Route::post('ajax-get-state-center-data' , [ManageCOURSESAdminController::class , 'AJAXREQUESTToGETCENTERSDATA'])->name('ajax-get-state-center-data') ; 
+
+
 
 
 

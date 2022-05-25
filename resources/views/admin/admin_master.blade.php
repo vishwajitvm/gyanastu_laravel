@@ -83,6 +83,11 @@
 	<script src="{{asset('../assets/vendor_components/fullcalendar/fullcalendar.min.js')}}"></script>
 	<script src="{{asset('backend/js/pages/calendar.js')}}"></script>
 
+  <script src="{{asset('../assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js')}}"></script>
+  <script src="{{asset('../assets/vendor_components/sweetalert/sweetalert.min.js')}}"></script>
+  <script src="{{asset('backend/js/pages/steps.js')}}"></script>
+
+
 
 	
 

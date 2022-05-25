@@ -57,6 +57,7 @@ class ManageCentersController extends Controller
         $data = new Center() ;
         $data->center_state = $request->center_state ;
         $data->center_name = $request->center_name ;
+        $data->center_address = $request->center_address ;
         $data->center_status = $request->center_status ;
         $data->save() ;
         $notification = array(

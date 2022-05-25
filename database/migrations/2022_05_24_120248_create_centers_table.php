@@ -17,6 +17,7 @@ class CreateCentersTable extends Migration
             $table->id();
             $table->string('center_state')->nullable() ;
             $table->string('center_name')->nullable() ;
+            $table->string('center_address')->nullable() ;
             $table->enum('center_status', ['active', 'inactive'])->nullable();
             $table->timestamps();
         });

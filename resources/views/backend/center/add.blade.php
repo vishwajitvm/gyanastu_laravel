@@ -60,6 +60,19 @@
                             <div class="row">
                                 <div class="col-md-12"><!--col-6 stared here-->
                                     <div class="form-group">
+                                        <h5>Center Address<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <textarea name="center_address" class="form-control"  cols="30" rows="5" placeholder="Enter Full Center Address"></textarea> </div>
+                                    </div>
+                                </div><!--col-6 Ended here-->
+                            </div>
+                            <!--row Ended here-->
+                           
+
+                            <!--row Stared here-->
+                            <div class="row">
+                                <div class="col-md-12"><!--col-6 stared here-->
+                                    <div class="form-group">
                                         <h5>Center Status </h5>
                                         <div class="controls">
                                             <select name="center_status" id="select"  class="form-control">

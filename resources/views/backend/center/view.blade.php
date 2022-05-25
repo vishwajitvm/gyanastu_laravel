@@ -17,7 +17,7 @@
 
            <div class="box">
               <div class="box-header with-border">
-                <h3 class="box-title">Boards List</h3>
+                <h3 class="box-title">Center List</h3>
                 <a href=" {{ route('admin-center.add') }} " class="btn btn-rounded btn-success md-5" style="float: right"> Add Center </a>
               </div>
               <!-- /.box-header -->
@@ -29,6 +29,7 @@
                               <th width="5%">SL</th>
                               <th>Center State</th>
                               <th> Center Name </th>
+                              <th> Center Address </th>
                               <th width="15%"> Center Status </th>
                               <th width="15%">Action</th>
                           </tr>
@@ -39,6 +40,7 @@
                               <td> {{$key+1}} </td>
                               <td> {{$item->center_state}} </td>
                               <td> {{ $item->center_name }} </td>
+                              <td> {{ $item->center_address != null?$item->center_address:"N/A" }}  </td>
                               <td  style="{{($item->center_status =='active')?'color:green':'color:red' }} ; font-size:18px"> {{$item->center_status}} </td>
 
                               <td>

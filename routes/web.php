@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\ManageManageBoardsController ;
 use App\Http\Controllers\admin\ManageMediumController ;
 use App\Http\Controllers\admin\ManageSubjectController ;
 use App\Http\Controllers\admin\ManageCentersController ;
+use App\Http\Controllers\admin\ManageStreamController ;
 
 
 /*
@@ -197,6 +198,25 @@ Route::prefix('admin-center')->group(function() {
 
 
 }) ;
+
+//
+//MANAGE STREAM
+//
+Route::prefix('admin-stream')->group(function() {
+    //add
+    Route::get('/add' , [ManageStreamController::class , 'AddStreamController'])->name('admin-stream.add') ; 
+
+    //store
+    Route::post('/store' , [ManageStreamController::class , 'StoreStreamController'])->name('admin-stream.store') ; 
+
+    //view
+    Route::get('/view' , [ManageStreamController::class , 'ViewStreamController'])->name('admin-stream.view') ; 
+
+    //delete
+    Route::get('/delete/{id}' , [ManageStreamController::class , 'DeleteStreamController'])->name('admin-stream.delete') ; 
+
+}) ;
+
 
 
 

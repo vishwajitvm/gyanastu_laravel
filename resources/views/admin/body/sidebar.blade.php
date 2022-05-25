@@ -111,6 +111,19 @@
           </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/admin-stream')?'active':'' }}">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Stream</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ Route('admin-stream.add') }}"><i class="ti-more"></i>Add Stream</a></li>
+            <li><a href="{{ Route('admin-stream.view') }}"><i class="ti-more"></i>View Stream</a></li>
+          </ul>
+        </li>
+
 
 
 

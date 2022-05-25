@@ -32,7 +32,7 @@
                                             <select name="usertype" id="select" required class="form-control">
                                                 <option value="" selected="" disabled>Select Role</option>
                                                 <option value="Admin">Admin</option>
-                                                <option value="User">User</option>
+                                                <option value="User">Student</option>
 
                                             </select>
                                         </div>
@@ -126,65 +126,6 @@
                                       </div>
                                   </div><!--col-6 Ended here-->
                                   
-  
-                                  <div class="col-md-6"><!--col-6 stared here-->
-                                      <div class="form-group">
-                                          <h5>Your Facebook Profile <span class="text-danger">*</span></h5>
-                                          <div class="controls">
-                                              <input type="text" name="facebook_profile" class="form-control"  > </div>
-                                      </div>
-                                  </div><!--col-6 Ended here-->
-  
-                                  <div class="col-md-6"><!--col-6 stared here-->
-                                      <div class="form-group">
-                                          <h5>Your Instagram Profile <span class="text-danger">*</span></h5>
-                                          <div class="controls">
-                                              <input type="text" name="instagram_profile" class="form-control"  > </div>
-                                      </div>
-                                  </div><!--col-6 Ended here-->
-  
-                                  <div class="col-md-6"><!--col-6 stared here-->
-                                      <div class="form-group">
-                                          <h5>Your linkdine Profile <span class="text-danger">*</span></h5>
-                                          <div class="controls">
-                                              <input type="text" name="linkdine_profile" class="form-control"  > </div>
-                                      </div>
-                                  </div><!--col-6 Ended here-->
-  
-                                  <div class="col-md-6"><!--col-6 stared here-->
-                                      <div class="form-group">
-                                          <h5>How you hear about our party <span class="text-danger">*</span></h5>
-                                          <div class="controls">
-                                              <select name="hear_about_party" id="hear_about_party" required  class="form-control">
-                                                  <option value="" selected="" disabled>---Select Any---</option>
-                                                  <option value="Friends"  > Friends </option>
-                                                  <option value="Newspaper" > Newspaper </option>
-                                                  <option value="Facebook"  > Facebook </option>
-                                                  <option value="Instagram" > Instagram </option>
-                                                  <option value="Internet-search" > Internet-search </option>
-                                                  <option value="Blog"  > Blog </option>
-                                                  <option value="LBB" > LBB </option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                  </div><!--col-6 Ended here-->
-  
-                                  <div class="col-md-6"><!--col-6 stared here-->
-                                      <div class="form-group">
-                                          <h5>What are your expections from aragma? <span class="text-danger">*</span></h5>
-                                          <div class="controls">
-                                              <input type="text" name="expectation_from_aragma"  class="form-control"  > </div>
-                                      </div>
-                                  </div><!--col-6 Ended here-->
-  
-                                  <div class="col-md-6"><!--col-6 stared here-->
-                                      <div class="form-group">
-                                          <h5>What is Your Tallent ? <span class="text-danger">*</span></h5>
-                                          <div class="controls">
-                                              <input type="text" name="user_tallent" class="form-control"   > </div>
-                                      </div>
-                                  </div><!--col-6 Ended here-->
-                                  <!--*****new data end here**--->
                                   
   
                                   <div class="col-md-6"><!--col-6 stared here-->
@@ -209,8 +150,6 @@
 
                            </div>
                          </div>
-                           
-                           
                            
                            <div class="text-xs-right">
                                <input type="submit" class="btn btn-rounded btn-info" value="Submit">

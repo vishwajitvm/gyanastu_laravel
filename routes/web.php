@@ -225,6 +225,10 @@ Route::prefix('admin-course')->group(function() {
     //add course here 
     Route::get('/add' , [ManageCOURSESAdminController::class , 'AddCourse'])->name('admin-course.add') ; 
 
+    //Store
+    Route::post('/store' , [ManageCOURSESAdminController::class , 'StoreCourse'])->name('admin-course.store') ; 
+
+
 }) ;
 
 //AJAX REQUEST FOR STATE CENTER DATA 

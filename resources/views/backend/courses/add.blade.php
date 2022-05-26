@@ -21,7 +21,14 @@
                <div class="box-body">
                  <div class="row">
                    <div class="col">
-                       <form  method="POST" action=" {{Route('admin-board.store')}} " > <!--form-->
+                       @if ($errors->any())
+                           <div class="my-3">
+                                @foreach ($errors->all() as $err)
+                                    <li class="font-weight-bold text-danger "> {{ $err }} </li>
+                                @endforeach
+                           </div>
+                       @endif
+                       <form  method="POST" action="{{Route('admin-course.store')}}"  enctype="multipart/form-data"> <!--form  -->
                         @csrf
                          <div class="row">
                            <div class="col-12">	
@@ -32,7 +39,7 @@
                                     <div class="form-group">
                                         <h5>Your Name </h5>
                                         <div class="controls">
-                                            <input type="text" name="publisher_name" value="{{ $user->name }}" class="form-control" required="" readonly aria-invalid="false"> </div>
+                                            <input type="text" name="publisher_name" value="{{ $user->name }}" class="form-control"  readonly aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
@@ -40,22 +47,34 @@
                                     <div class="form-group">
                                         <h5>Your Email</h5>
                                         <div class="controls">
-                                            <input type="text" name="publisher_email" value=" {{ $user->email }} " class="form-control" readonly required="" aria-invalid="false"> </div>
+                                            <input type="text" name="publisher_email" value=" {{ $user->email }} " class="form-control" readonly  aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
                                 <div class="col-md-12"><!--col-6 stared here-->
                                     <div class="form-group">
-                                        <h5>Course Name</h5>
+                                        <h5>Course Name
+                                             {{-- <span class="float-right text-danger font-weight-bold">
+                                                  @error('course_name')
+                                                    {{ $message }}
+                                                  @enderror
+                                             </span> --}}
+                                            </h5>
                                         <div class="controls">
-                                            <input type="text" name="course_name"  class="form-control"  required="" aria-invalid="false"> </div>
+                                            <input type="text" name="course_name"  class="form-control"   aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
                                 
 
                                 <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">
-                                        <h5>Type Of Course  </h5>
+                                        <h5>Type Of Course
+                                            {{-- <span class="float-right text-danger font-weight-bold">
+                                                @error('type_of_course')
+                                                  {{ $message }}
+                                                @enderror
+                                           </span> --}}
+                                        </h5>
                                         <div class="controls">
                                             <select name="type_of_course"   class="form-control">
                                                 <option selected="" disabled>Select Course type</option>
@@ -116,7 +135,13 @@
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <div class="form-group">
-                                      <label>Select Subjects</label>
+                                      <h5>Select Subjects
+                                        {{-- <span class="float-right text-danger font-weight-bold">
+                                            @error('subject_selected')
+                                              {{ $message }}
+                                            @enderror
+                                       </span> --}}
+                                      </h5>
                                       <select class="form-control select2" name="subject_selected[]" multiple="multiple" data-placeholder="Select Subjects" style="width: 100%;">
                                         @foreach ($subjects as $item4)
                                             <option value="{{ $item4->subject_name }}">{{ Str::upper($item4->subject_name) }}</option>
@@ -145,7 +170,7 @@
                                     <div class="form-group">
                                         <h5>Meeting Name</h5>
                                         <div class="controls">
-                                            <input type="text" name="meeting_name"  class="form-control" required="" aria-invalid="false"> </div>
+                                            <input type="text" name="meeting_name"  class="form-control"  aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
@@ -268,7 +293,13 @@
 
                                 <div class="col-md-12"><!--col-6 stared here-->
                                     <div class="form-group">
-                                        <h5>Course Discount price in ₹</h5>
+                                        <h5>Course Discount price in ₹
+                                            {{-- <span class="float-right text-danger font-weight-bold">
+                                                @error('course_total_price')
+                                                  {{ $message }}
+                                                @enderror
+                                           </span> --}}
+                                        </h5>
                                         <div class="controls">
                                             <input type="number" name="course_total_price" id="total_price_with_discount"  class="form-control"  readonly>
                                         </div>

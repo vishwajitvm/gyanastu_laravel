@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href=" {{asset('backend/images/faviconnew.png')}} ">
 
-    <title>Aragma - Forgot Password </title>
+    <title>Gyanastu - Forgot Password </title>
   
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{asset('backend/css/vendors_css.css')}}">

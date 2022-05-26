@@ -24084,3 +24084,8 @@ img.away, img.busy, img.offline, img.online {
   background: white !important;
   color: #000000 !important;
 }
+
+/* MY CHANGES */
+.sidebar-menu > li > a > svg{
+    color: #6a425c;
+}

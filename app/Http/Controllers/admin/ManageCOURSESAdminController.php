@@ -21,7 +21,7 @@ class ManageCOURSESAdminController extends Controller
         $language = medium::all() ;
         $courseStream = Stream::all() ;
         $subjects = subject::all() ;
-        $centers = Center::all() ;
+        $centers = Center::all()->unique('center_state') ;
         $id = Auth::user()->id ;
         $user = User::find($id) ;
 

@@ -32,7 +32,7 @@
                                     <div class="form-group">
                                         <h5>Your Name </h5>
                                         <div class="controls">
-                                            <input type="text" name="board_name" value="{{ $user->name }}" class="form-control" required="" readonly aria-invalid="false"> </div>
+                                            <input type="text" name="publisher_name" value="{{ $user->name }}" class="form-control" required="" readonly aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
@@ -40,19 +40,27 @@
                                     <div class="form-group">
                                         <h5>Your Email</h5>
                                         <div class="controls">
-                                            <input type="text" name="board_name" value=" {{ $user->email }} " class="form-control" readonly required="" aria-invalid="false"> </div>
+                                            <input type="text" name="publisher_email" value=" {{ $user->email }} " class="form-control" readonly required="" aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
+
+                                <div class="col-md-12"><!--col-6 stared here-->
+                                    <div class="form-group">
+                                        <h5>Course Name</h5>
+                                        <div class="controls">
+                                            <input type="text" name="course_name"  class="form-control"  required="" aria-invalid="false"> </div>
+                                    </div>
+                                </div><!--col-6 Ended here-->
+                                
 
                                 <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">
                                         <h5>Type Of Course  </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select"  class="form-control">
+                                            <select name="type_of_course"   class="form-control">
                                                 <option selected="" disabled>Select Course type</option>
-                                                <option value="Single Subject">Single Subject</option>
-                                                <option value="Package Subjects">Package Subjects</option>
-
+                                                <option value="Single">Single Subject</option>
+                                                <option value="Package">Package Subjects</option>
                                             </select>
                                         </div>
                                     </div>
@@ -62,7 +70,7 @@
                                     <div class="form-group">
                                         <h5>Select Board </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select"  class="form-control">
+                                            <select name="board_type"   class="form-control">
                                                 <option selected="" disabled>Select Board</option>
                                                 @foreach ($board as $item1)
                                                     <option value="{{ $item1->board_name }}"> {{ Str::upper($item1->board_name) }} </option>
@@ -77,7 +85,7 @@
                                     <div class="form-group">
                                         <h5>Select Medium </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select"  class="form-control">
+                                            <select name="medium_type" id="select"  class="form-control">
                                                 <option selected="" disabled>Select Medium</option>
                                                 @foreach ($language as $item2)
                                                     <option value="{{ $item2->medium_name }}"> {{ Str::upper($item2->medium_name ) }} </option>
@@ -91,7 +99,7 @@
                                     <div class="form-group">
                                         <h5>Select Stream </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select"  class="form-control">
+                                            <select name="stream_type" id="select"  class="form-control">
                                                 <option selected="" disabled>Select Stream</option>
                                                 @foreach ($courseStream as $item3)
                                                     <option value="{{ $item3->stream_name }}"> {{ Str::upper($item3->stream_name ) }} </option>
@@ -109,7 +117,7 @@
                                 <div class="col-md-6 ">
                                     <div class="form-group">
                                       <label>Select Subjects</label>
-                                      <select class="form-control select2" multiple="multiple" data-placeholder="Select Subjects" style="width: 100%;">
+                                      <select class="form-control select2" name="subject_selected[]" multiple="multiple" data-placeholder="Select Subjects" style="width: 100%;">
                                         @foreach ($subjects as $item4)
                                             <option value="{{ $item4->subject_name }}">{{ Str::upper($item4->subject_name) }}</option>
                                         @endforeach
@@ -121,7 +129,7 @@
                                     <div class="form-group">
                                         <h5>Select Mode of Class </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select"  class="form-control" onchange="classModeChecker(this);">
+                                            <select name="mode_of_class" id="select"  class="form-control" onchange="classModeChecker(this);">
                                                 <option selected="" >Select Mode of Class</option>
                                                 <option value="virtual">Virtual or Offline Classes</option>
                                                 <option value="online">Online Classes</option>
@@ -137,7 +145,7 @@
                                     <div class="form-group">
                                         <h5>Meeting Name</h5>
                                         <div class="controls">
-                                            <input type="text" name="board_name"  class="form-control" required="" aria-invalid="false"> </div>
+                                            <input type="text" name="meeting_name"  class="form-control" required="" aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
@@ -145,7 +153,7 @@
                                     <div class="form-group">
                                         <h5>Meeting description</h5>
                                         <div class="controls">
-                                            <textarea name="board_name" class="form-control" cols="30" rows="3"></textarea>
+                                            <textarea name="meeting_description" class="form-control" cols="30" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -154,7 +162,7 @@
                                     <div class="form-group">
                                         <h5>Meeting Link</h5>
                                         <div class="controls">
-                                            <input type="url" name="board_name"  class="form-control" placeholder="Http://" aria-invalid="false"> </div>
+                                            <input type="url" name="meeting_link"  class="form-control" placeholder="Http://" aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
                             </div> <!--Online Classes section end-->
@@ -165,7 +173,7 @@
                                     <div class="form-group">
                                         <h5>Select State of Virtual Class </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select_state_of_virtualclass"  class="form-control">
+                                            <select name="sel_state" id="select_state_of_virtualclass"  class="form-control">
                                                 <option selected="" disabled>Select State of Virtual Class</option>
                                                 @foreach ($centers as $item5)
                                                     <option value="{{ $item5->center_state }}">{{ $item5->center_state }}</option>
@@ -180,11 +188,11 @@
                                     <div class="form-group">
                                         <h5>Select Center Name of Virtual Class </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="virtualclass_center"  class="form-control">
+                                            <select name="sel_center_name" id="virtualclass_center"  class="form-control">
                                                 <option selected="" disabled>Select Center Name of Virtual Class</option>
-                                                @foreach ($centers as $item6)
+                                                {{-- @foreach ($centers as $item6)
                                                     <option value="{{ $item6->center_name }}">{{ $item6->center_name }}</option>
-                                                @endforeach
+                                                @endforeach --}}
                                             </select>
                                         </div>
                                     </div>
@@ -198,7 +206,16 @@
                                     <div class="form-group">
                                         <h5>Course Banner Images</h5>
                                         <div class="controls">
-                                            <input type="file" name="board_name"  class="form-control" accept="image/*">
+                                            <input type="file" name="course_banner_image"  class="form-control" accept="image/*">
+                                        </div>
+                                    </div>
+                                </div><!--col-6 Ended here-->
+
+                                <div class="col-md-6"><!--col-6 stared here-->
+                                    <div class="form-group">
+                                        <h5>Course Brocher PDF</h5>
+                                        <div class="controls">
+                                            <input type="file" name="course_broucher"  class="form-control"  accept="application/pdf,application/vnd.ms-excel">
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -207,7 +224,16 @@
                                     <div class="form-group">
                                         <h5>Sample Video Upload</h5>
                                         <div class="controls">
-                                            <input type="file" name="board_name" multiple  class="form-control" accept="video/mp4,video/x-m4v,video/*" >
+                                            <input type="file" name="course_sample_video[]" multiple  class="form-control" accept="video/mp4,video/x-m4v,video/*" >
+                                        </div>
+                                    </div>
+                                </div><!--col-6 Ended here-->
+
+                                <div class="col-md-6"><!--col-6 stared here-->
+                                    <div class="form-group">
+                                        <h5>Sample Study Material Upload</h5>
+                                        <div class="controls">
+                                            <input type="file" name="course_sample_pdf[]" multiple  class="form-control" accept="application/pdf,application/vnd.ms-excel" >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -217,16 +243,16 @@
                                     <div class="form-group">
                                         <h5>Course Short description</h5>
                                         <div class="controls">
-                                            <textarea  class="form-control"  cols="30" rows="4"></textarea>
+                                            <textarea  class="form-control" name="short_description"  cols="30" rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
                                 <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">
-                                        <h5>Course Price</h5>
+                                        <h5>Course Base Price</h5>
                                         <div class="controls">
-                                            <input type="number" name="board_name" id="total_couse_price"  class="form-control" placeholder="₹" >
+                                            <input type="number" name="course_base_price" id="total_couse_price" onkeyup="getPrice()"  class="form-control" placeholder="₹" >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -235,7 +261,7 @@
                                     <div class="form-group">
                                         <h5>Course Discount in Percentage(%)</h5>
                                         <div class="controls">
-                                            <input type="number" name="board_name" id="total_discount_percentage" onkeyup="getPrice()"  class="form-control"  >
+                                            <input type="number" name="course_discount" id="total_discount_percentage" onkeyup="getPrice()"  class="form-control"  >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -244,7 +270,7 @@
                                     <div class="form-group">
                                         <h5>Course Discount price in ₹</h5>
                                         <div class="controls">
-                                            <input type="number" name="board_name" id="total_price_with_discount"  class="form-control"  readonly>
+                                            <input type="number" name="course_total_price" id="total_price_with_discount"  class="form-control"  readonly>
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -257,7 +283,7 @@
                                     <div class="form-group">
                                         <h5>Course Status </h5>
                                         <div class="controls">
-                                            <select name="board_status" id="select"  class="form-control">
+                                            <select name="course_status" id="select"  class="form-control">
                                                 <option selected="" disabled>Select Status</option>
                                                 <option value="active">Active</option>
                                                 <option value="inactive">Inactive</option>

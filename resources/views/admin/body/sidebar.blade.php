@@ -140,7 +140,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ Route('admin-course.add') }}"><i class="ti-more"></i>Add Course</a></li>
-            <li><a href="mailbox_compose.html"><i class="ti-more"></i>View Course</a></li>
+            <li><a href="{{ Route('admin-course.view') }}"><i class="ti-more"></i>View Course</a></li>
           </ul>
         </li>
 

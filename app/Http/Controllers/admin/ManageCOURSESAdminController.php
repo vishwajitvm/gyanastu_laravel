@@ -129,7 +129,25 @@ class ManageCOURSESAdminController extends Controller
             'alert-type' => 'success'
         ) ;
         return redirect()->route('admin-course.add')->with($notification) ;
+    }
 
+    //View the courses 
+    public function ViewCourse() {
+        $data = Course::latest()->get() ;
+        return view('backend.courses.view' , compact(['data'])) ;
+    }
 
+    //edit
+    public function EditCourse($id) {
+        $data = Course::find($id) ;
+        $board = board::all() ;
+        $language = medium::all() ;
+        $courseStream = Stream::all() ;
+        $subjects = subject::all() ;
+        $centers = Center::all()->unique('center_state') ;
+        $id = Auth::user()->id ;
+        $user = User::find($id) ;
+
+        return view('backend.courses.edit' , compact(['data' ,'board' , 'language' , 'courseStream' , 'subjects' , 'centers' , 'user'])) ;
     }
 }

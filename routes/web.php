@@ -228,6 +228,13 @@ Route::prefix('admin-course')->group(function() {
     //Store
     Route::post('/store' , [ManageCOURSESAdminController::class , 'StoreCourse'])->name('admin-course.store') ; 
 
+    //view
+    Route::get('/view' , [ManageCOURSESAdminController::class , 'ViewCourse'])->name('admin-course.view') ; 
+
+    //edit
+    Route::get('/edit/{id}' , [ManageCOURSESAdminController::class , 'EditCourse'])->name('admin-course.edit') ; 
+
+
 
 }) ;
 

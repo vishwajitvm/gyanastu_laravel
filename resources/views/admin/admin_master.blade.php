@@ -130,6 +130,34 @@
   })
   </script>
 
+<script type="text/javascript">
+  $(function() {
+    $(document).on('click' , '#edit' ,function(e) {
+      e.preventDefault() ;
+      var link = $(this).attr("href") ;
+      //sweetalert 
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You want to Edit this!?",
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Edit it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = link
+            // Swal.fire(
+            //   'success'
+            // )
+          }
+        })
+      //sweetalert
+    }) ;
+  })
+  </script>
+
+
 
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

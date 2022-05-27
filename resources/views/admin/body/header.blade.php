@@ -33,12 +33,7 @@
       <div class="navbar-custom-menu r-side">
         <ul class="nav navbar-nav">
 		  <!-- full Screen -->
-	      <li class="search-bar">		  
-			  <div class="lookup lookup-circle lookup-right">
-			     <input type="text" name="s">
-			  </div>
-		  </li>			
-		  <!-- Notifications -->
+		  {{-- <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle" data-toggle="dropdown" title="Notifications">
 			  <i class="ti-bell"></i>
@@ -102,7 +97,12 @@
 				  <a href="#">View all</a>
 			  </li>
 			</ul>
-		  </li>	
+		  </li>	 --}}
+
+		  <li class="btn-group nav-item d-none d-xl-inline-block mr-5">
+			<a href="/" class="btn btn-rounded btn-success md-5 mt-3" style="float: right"> Visit Website </a>
+		</li>
+
 
 		  @php
 			  $user = DB::table('users')->where('id', Auth::user()->id)->first() ;

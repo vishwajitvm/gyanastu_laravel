@@ -8,8 +8,12 @@ use App\Http\Controllers\userdashboardController ;
 use App\Http\Controllers\userProfileController ;
 use Illuminate\Support\Facades\Auth ;
 //models
-use App\Models\User ;
 use Illuminate\Support\Facades\Artisan;
+use App\Models\Stream ;
+use App\Models\subject ;
+use App\Models\Center ;
+use App\Models\Course;
+use App\Models\User ;
 use App\Models\board ;
 use App\Models\medium ;
 //admin Controller
@@ -19,6 +23,8 @@ use App\Http\Controllers\admin\ManageSubjectController ;
 use App\Http\Controllers\admin\ManageCentersController ;
 use App\Http\Controllers\admin\ManageStreamController ;
 use App\Http\Controllers\admin\ManageCOURSESAdminController ;
+//website
+use App\Http\Controllers\website\WebsiteController ;
 
 
 /*
@@ -51,7 +57,11 @@ Route::get('redirects' , [AdminController::class , 'loginRedirects'])->middlewar
 
 
 Route::get('/', function () {
-    return view('auth.login');
+        // return view('auth.login');
+    $board = board::all()->where('board_status' , 'active') ;
+    $language = medium::all()->where('medium_status' , 'active') ;
+    $courseStream = Stream::all()->where('stream_status' , 'active') ;
+    return view('website.index' , compact(['board' , 'language' , 'courseStream'])) ;
 });
 
 //authentication
@@ -250,16 +260,6 @@ Route::post('ajax-get-state-center-data' , [ManageCOURSESAdminController::class 
 
 
 
-
-
-
-
-
-
-
-
-
-
 //************************************************************ *//
 ////////////////USERS DASHBOARD ROUTING//////////////////////////
 //********************************************************* *//
@@ -301,6 +301,38 @@ Route::prefix('userprofile')->group( function() {
 //************************************************************ *//
 ///////////////Finally Website Route here[ARAGMA]////////////////
 //********************************************************* *//
+//Authentication check for login 
+Route::get('loginpage' , [WebsiteController::class , 'checkAuthentication'])->name('loginpage') ;
+
+
+//about page
+Route::get('/about' , [WebsiteController::class , 'aboutus'])->name('about') ;
+
+//contact us contact-us
+Route::get('/contact-us' , [WebsiteController::class , 'ContactUs'])->name('contact-us') ;
+
+//course list course-list
+Route::get('/course-list' , [WebsiteController::class , 'CourseList'])->name('course-list') ;
+
+//single course course
+Route::get('/course/{id}' , [WebsiteController::class , 'SingleCourse'])->name('course') ;
+
+//gallery
+Route::get('/gallery' , [WebsiteController::class , 'Gallery'])->name('gallery') ;
+
+//admission
+Route::get('/admission' , [WebsiteController::class , 'Admission'])->name('admission') ;
+
+//testimonials
+Route::get('/testimonials' , [WebsiteController::class , 'Testimonials'])->name('testimonials') ;
+
+//terms and conditions terms-and-condition
+Route::get('/terms-and-condition' , [WebsiteController::class , 'TermsAndConditions'])->name('terms-and-condition') ;
+
+//privacy policy Privacy-policy
+Route::get('/Privacy-policy' , [WebsiteController::class , 'PrivacyPolicy'])->name('Privacy-policy') ;
+
+
 
 
 

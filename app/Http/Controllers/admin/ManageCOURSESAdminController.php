@@ -242,7 +242,17 @@ class ManageCOURSESAdminController extends Controller
                     'alert-type' => 'success'
                 ) ;
                 return redirect()->route('admin-course.view')->with($notification) ;
-        
-        
+    }
+
+    //delete
+    public function DeleteCourse($id) {
+        $user = Course::find($id) ;
+        $user->delete() ;
+        $notification = array(
+            'message' => 'Course Deleted Successfully',
+            'alert-type' => 'info'
+        ) ;
+        return redirect()->route('admin-course.view')->with($notification) ;
+
     }
 }

@@ -56,7 +56,7 @@
                                 &nbsp;&nbsp;
                                 <a class="btn btn-success my-2" href=" {{Route('admin-course.edit',$item->id)}}" id="edit">Edit</a>
                                 &nbsp;&nbsp;
-                                <a class="btn btn-danger my-2" href=" {{Route('admin-board.delete',$item->id)}}" id="delete">Delete</a>
+                                <a class="btn btn-danger my-2" href=" {{Route('admin-course.delete',$item->id)}}" id="delete">Delete</a>
                               </td>
                           </tr>
                         @endforeach

@@ -237,6 +237,9 @@ Route::prefix('admin-course')->group(function() {
     //updated data store
     Route::post('/update/{id}' , [ManageCOURSESAdminController::class , 'UpdateCourse'])->name('admin-course.update') ; 
 
+    //delete
+    Route::get('/delete/{id}' , [ManageCOURSESAdminController::class , 'DeleteCourse'])->name('admin-course.delete') ; 
+
 
 
 

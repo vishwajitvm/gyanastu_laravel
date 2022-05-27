@@ -232,7 +232,11 @@ Route::prefix('admin-course')->group(function() {
     Route::get('/view' , [ManageCOURSESAdminController::class , 'ViewCourse'])->name('admin-course.view') ; 
 
     //edit
-    Route::get('/edit/{id}' , [ManageCOURSESAdminController::class , 'EditCourse'])->name('admin-course.edit') ; 
+    Route::get('/edit/{id}' , [ManageCOURSESAdminController::class , 'EditCourse'])->name('admin-course.edit') ;
+    
+    //updated data store
+    Route::post('/update/{id}' , [ManageCOURSESAdminController::class , 'UpdateCourse'])->name('admin-course.update') ; 
+
 
 
 

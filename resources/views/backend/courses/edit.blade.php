@@ -28,14 +28,14 @@
                                 @endforeach
                            </div>
                        @endif
-                       <form  method="POST" action="{{Route('admin-course.store')}}"  enctype="multipart/form-data"> <!--form  -->
+                       <form  method="POST" action="{{Route('admin-course.update',$data->id)}}"  enctype="multipart/form-data"> <!--form  -->
                         @csrf
                          <div class="row">
                            <div class="col-12">	
 
                             <!--row Stared here-->
                             <div class="row">
-                                <div class="col-md-6"><!--col-6 stared here-->
+                                {{-- <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">
                                         <h5>Your Name </h5>
                                         <div class="controls">
@@ -49,7 +49,7 @@
                                         <div class="controls">
                                             <input type="text" name="publisher_email" value=" {{ $user->email }} " class="form-control" readonly  aria-invalid="false"> </div>
                                     </div>
-                                </div><!--col-6 Ended here-->
+                                </div><!--col-6 Ended here--> --}}
 
                                 <div class="col-md-12"><!--col-6 stared here-->
                                     <div class="form-group">
@@ -61,7 +61,7 @@
                                              </span> --}}
                                             </h5>
                                         <div class="controls">
-                                            <input type="text" name="course_name"  class="form-control"   aria-invalid="false"> </div>
+                                            <input type="text" name="course_name" value="{{ $data->course_name }}"  class="form-control"   aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
                                 
@@ -78,8 +78,8 @@
                                         <div class="controls">
                                             <select name="type_of_course"   class="form-control">
                                                 <option selected="" disabled>Select Course type</option>
-                                                <option value="Single">Single Subject</option>
-                                                <option value="Package">Package Subjects</option>
+                                                <option value="Single" {{ $data->type_of_course=="Single"?"selected":"" }}>Single Subject</option>
+                                                <option value="Package" {{ $data->type_of_course=="Package"?"selected":"" }}>Package Subjects</option>
                                             </select>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                             <select name="board_type"   class="form-control">
                                                 <option selected="" disabled>Select Board</option>
                                                 @foreach ($board as $item1)
-                                                    <option value="{{ $item1->board_name }}"> {{ Str::upper($item1->board_name) }} </option>
+                                                    <option value="{{ $item1->board_name }}" {{ $data->board_type==$item1->board_name?"selected":"" }} > {{ Str::upper($item1->board_name) }} </option>
                                                 @endforeach
 
                                             </select>
@@ -107,7 +107,7 @@
                                             <select name="medium_type" id="select"  class="form-control">
                                                 <option selected="" disabled>Select Medium</option>
                                                 @foreach ($language as $item2)
-                                                    <option value="{{ $item2->medium_name }}"> {{ Str::upper($item2->medium_name ) }} </option>
+                                                    <option value="{{ $item2->medium_name }}" {{ $data->medium_type==$item2->medium_name?"selected":"" }}> {{ Str::upper($item2->medium_name ) }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -121,7 +121,7 @@
                                             <select name="stream_type" id="select"  class="form-control">
                                                 <option selected="" disabled>Select Stream</option>
                                                 @foreach ($courseStream as $item3)
-                                                    <option value="{{ $item3->stream_name }}"> {{ Str::upper($item3->stream_name ) }} </option>
+                                                    <option value="{{ $item3->stream_name }}"  {{ $data->stream_type==$item3->stream_name?"selected":"" }}> {{ Str::upper($item3->stream_name ) }} </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -131,6 +131,11 @@
 
                             </div>
                             <!--row Ended here-->
+
+                            @foreach ( $data->subject_selected  as $itemsss)
+                                {{ $itemsss }}
+                            @endforeach
+     
 
                             <div class="row">
                                 <div class="col-md-6 ">
@@ -143,8 +148,13 @@
                                        </span> --}}
                                       </h5>
                                       <select class="form-control select2" name="subject_selected[]" multiple="multiple" data-placeholder="Select Subjects" style="width: 100%;">
+                                        
                                         @foreach ($subjects as $item4)
-                                            <option value="{{ $item4->subject_name }}">{{ Str::upper($item4->subject_name) }}</option>
+                                            <option value="{{ $item4->subject_name }}" 
+                                                @foreach ( $data->subject_selected  as $itemsss)
+                                                {{ $itemsss == $item4->subject_name?"selected":"" }}
+                                                @endforeach
+                                                >{{ Str::upper($item4->subject_name) }}</option>
                                         @endforeach
                                       </select>
                                     </div>
@@ -156,8 +166,8 @@
                                         <div class="controls">
                                             <select name="mode_of_class" id="select"  class="form-control" onchange="classModeChecker(this);">
                                                 <option selected="" >Select Mode of Class</option>
-                                                <option value="virtual">Virtual or Offline Classes</option>
-                                                <option value="online">Online Classes</option>
+                                                <option value="virtual" {{ $data->mode_of_class == "virtual"?"selected":""  }} >Virtual or Offline Classes</option>
+                                                <option value="online" {{ $data->mode_of_class == "online"?"selected":""  }} >Online Classes</option>
                                             </select>
                                         </div>
                                     </div>
@@ -170,7 +180,7 @@
                                     <div class="form-group">
                                         <h5>Meeting Name</h5>
                                         <div class="controls">
-                                            <input type="text" name="meeting_name"  class="form-control"  aria-invalid="false"> </div>
+                                            <input type="text" name="meeting_name" value="{{ $data->meeting_name }}"  class="form-control"  aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
 
@@ -178,7 +188,7 @@
                                     <div class="form-group">
                                         <h5>Meeting description</h5>
                                         <div class="controls">
-                                            <textarea name="meeting_description" class="form-control" cols="30" rows="3"></textarea>
+                                            <textarea name="meeting_description"  class="form-control" cols="30" rows="3">{{ $data->meeting_description }}</textarea>
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -187,7 +197,7 @@
                                     <div class="form-group">
                                         <h5>Meeting Link</h5>
                                         <div class="controls">
-                                            <input type="url" name="meeting_link"  class="form-control" placeholder="Http://" aria-invalid="false"> </div>
+                                            <input type="url" name="meeting_link" value="{{ $data->meeting_link }}"  class="form-control" placeholder="Http://" aria-invalid="false"> </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
                             </div> <!--Online Classes section end-->
@@ -201,7 +211,7 @@
                                             <select name="sel_state" id="select_state_of_virtualclass"  class="form-control">
                                                 <option selected="" disabled>Select State of Virtual Class</option>
                                                 @foreach ($centers as $item5)
-                                                    <option value="{{ $item5->center_state }}">{{ $item5->center_state }}</option>
+                                                    <option value="{{ $item5->center_state }}" {{ $data->sel_state == $item5->center_state?"selected":"" }} >{{ $item5->center_state }}</option>
                                                 @endforeach
 
                                             </select>
@@ -215,9 +225,9 @@
                                         <div class="controls">
                                             <select name="sel_center_name" id="virtualclass_center"  class="form-control">
                                                 <option selected="" disabled>Select Center Name of Virtual Class</option>
-                                                {{-- @foreach ($centers as $item6)
-                                                    <option value="{{ $item6->center_name }}">{{ $item6->center_name }}</option>
-                                                @endforeach --}}
+                                                @foreach ($center2 as $item6)
+                                                    <option value="{{ $item6->center_name }}" {{ $data->sel_center_name = $item6->center_name?"selected":"" }}>{{ $item6->center_name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -231,7 +241,7 @@
                                     <div class="form-group">
                                         <h5>Course Banner Images</h5>
                                         <div class="controls">
-                                            <input type="file" name="course_banner_image"  class="form-control" accept="image/*">
+                                            <input type="file" name="course_banner_image" value="{{ $data->course_banner_image }}"  class="form-control" accept="image/*">
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -240,7 +250,7 @@
                                     <div class="form-group">
                                         <h5>Course Brocher PDF</h5>
                                         <div class="controls">
-                                            <input type="file" name="course_broucher"  class="form-control"  accept="application/pdf,application/vnd.ms-excel">
+                                            <input type="file" name="course_broucher" value="{{ $data->course_broucher }}" class="form-control"  accept="application/pdf,application/vnd.ms-excel">
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -249,7 +259,7 @@
                                     <div class="form-group">
                                         <h5>Sample Video Upload</h5>
                                         <div class="controls">
-                                            <input type="file" name="course_sample_video[]" multiple  class="form-control" accept="video/mp4,video/x-m4v,video/*" >
+                                            <input type="file" name="course_sample_video[]" multiple value="{{ $data->course_sample_video }}"  class="form-control" accept="video/mp4,video/x-m4v,video/*" >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -258,7 +268,7 @@
                                     <div class="form-group">
                                         <h5>Sample Study Material Upload</h5>
                                         <div class="controls">
-                                            <input type="file" name="course_sample_pdf[]" multiple  class="form-control" accept="application/pdf,application/vnd.ms-excel" >
+                                            <input type="file" name="course_sample_pdf[]" multiple value="{{ $data->course_sample_pdf }}" class="form-control" accept="application/pdf,application/vnd.ms-excel" >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -268,7 +278,7 @@
                                     <div class="form-group">
                                         <h5>Course Short description</h5>
                                         <div class="controls">
-                                            <textarea  class="form-control" name="short_description"  cols="30" rows="4"></textarea>
+                                            <textarea  class="form-control" name="short_description"  cols="30" rows="4">{{$data->short_description}}</textarea>
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -277,7 +287,7 @@
                                     <div class="form-group">
                                         <h5>Course Base Price</h5>
                                         <div class="controls">
-                                            <input type="number" name="course_base_price" id="total_couse_price" onkeyup="getPrice()"  class="form-control" placeholder="₹" >
+                                            <input type="number" name="course_base_price" value="{{ $data->course_base_price }}" id="total_couse_price" onkeyup="getPrice()"  class="form-control" placeholder="₹" >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -286,7 +296,7 @@
                                     <div class="form-group">
                                         <h5>Course Discount in Percentage(%)</h5>
                                         <div class="controls">
-                                            <input type="number" name="course_discount" id="total_discount_percentage" onkeyup="getPrice()"  class="form-control"  >
+                                            <input type="number" name="course_discount" value="{{ $data->course_discount }}" id="total_discount_percentage" onkeyup="getPrice()"  class="form-control"  >
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -301,7 +311,7 @@
                                            </span> --}}
                                         </h5>
                                         <div class="controls">
-                                            <input type="number" name="course_total_price" id="total_price_with_discount"  class="form-control"  readonly>
+                                            <input type="number"  name="course_total_price" value="{{ $data->course_total_price }}" id="total_price_with_discount"  class="form-control"  readonly>
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
@@ -316,8 +326,8 @@
                                         <div class="controls">
                                             <select name="course_status" id="select"  class="form-control">
                                                 <option selected="" disabled>Select Status</option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
+                                                <option value="active" {{ $data->course_status == "active"?"selected":"" }} >Active</option>
+                                                <option value="inactive" {{ $data->course_status == "inactive"?"selected":"" }}>Inactive</option>
 
                                             </select>
                                         </div>

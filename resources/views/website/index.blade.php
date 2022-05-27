@@ -20,8 +20,8 @@
                                     </p>
                                 </div>
                                 <div class="slider-btn bnt1 text-center">
-                                    <a href="admission.html" class="box-btn">Admission</a>
-                                    <a href="special-class.html" class="border-btn">View Courses</a>
+                                    <a href="{{ Route('admission') }}" class="box-btn">Admission</a>
+                                    <a href="{{ Route('course-list') }}" class="border-btn">View Courses</a>
                                 </div>
                             </div>
                         </div>
@@ -46,8 +46,8 @@
                                     </p>
                                 </div>
                                 <div class="slider-btn bnt2">
-                                    <a href="admission.html" class="box-btn">Admission</a>
-                                    <a href="special-class.html" class="border-btn">View Courses</a>
+                                    <a href="{{ Route('admission') }}" class="box-btn">Admission</a>
+                                    <a href="{{ Route('course-list') }}" class="border-btn">View Courses</a>
                                 </div>
                             </div>
                         </div>

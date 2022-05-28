@@ -100,6 +100,22 @@
                                     </div>
                                 </div><!--col-6 Ended here-->
 
+                                <div class="col-md-12"><!--col-6 stared here-->
+                                    <div class="form-group">
+                                        <h5>Select Class </h5>
+                                        <div class="controls">
+                                            <select name="course_class"   class="form-control">
+                                                <option selected="" disabled>Select Class</option>
+                                                    <option value="9"> 9th class </option>
+                                                    <option value="10"> 10th class </option>
+                                                    <option value="11"> 11th class </option>
+                                                    <option value="12"> 12th class </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div><!--col-6 Ended here-->
+
                                 <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">
                                         <h5>Select Medium </h5>

@@ -35,7 +35,7 @@
 
                             <!--row Stared here-->
                             <div class="row">
-                                {{-- <div class="col-md-6"><!--col-6 stared here-->
+                                <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">
                                         <h5>Your Name </h5>
                                         <div class="controls">
@@ -49,7 +49,7 @@
                                         <div class="controls">
                                             <input type="text" name="publisher_email" value=" {{ $user->email }} " class="form-control" readonly  aria-invalid="false"> </div>
                                     </div>
-                                </div><!--col-6 Ended here--> --}}
+                                </div><!--col-6 Ended here-->
 
                                 <div class="col-md-12"><!--col-6 stared here-->
                                     <div class="form-group">
@@ -99,6 +99,23 @@
                                         </div>
                                     </div>
                                 </div><!--col-6 Ended here-->
+
+                                <div class="col-md-12"><!--col-6 stared here-->
+                                    <div class="form-group">
+                                        <h5>Select Class </h5>
+                                        <div class="controls">
+                                            <select name="course_class"   class="form-control">
+                                                <option selected="" disabled>Select Class</option>
+                                                    <option value="9" {{ $data->course_class == "9"?"selected":"" }} > 9th class </option>
+                                                    <option value="10" {{ $data->course_class == "10"?"selected":"" }}> 10th class </option>
+                                                    <option value="11" {{ $data->course_class == "11"?"selected":"" }}> 11th class </option>
+                                                    <option value="12" {{ $data->course_class == "12"?"selected":"" }}> 12th class </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div><!--col-6 Ended here-->
+
 
                                 <div class="col-md-6"><!--col-6 stared here-->
                                     <div class="form-group">

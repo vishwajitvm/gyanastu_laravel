@@ -144,6 +144,21 @@
           </ul>
         </li>
 
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Classes</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Add Links</a></li>
+            <li><a href="mailbox_compose.html"><i class="ti-more"></i>add Videos</a></li>
+            <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>View</a></li>
+          </ul>
+        </li>
+
+
         
 
         {{-- <li class="treeview">

@@ -13,7 +13,6 @@ use App\Models\Course;
 use App\Models\User ;
 use Illuminate\Support\Facades\Auth ;
 
-
 class ManageCOURSESAdminController extends Controller
 {
     //Add Course here
@@ -57,6 +56,7 @@ class ManageCOURSESAdminController extends Controller
         $data->course_name = $request->course_name ;
         $data->type_of_course = $request->type_of_course ;
         $data->board_type = $request->board_type ;
+        $data->course_class = $request->course_class ;
         $data->medium_type = $request->medium_type ;
         $data->stream_type = $request->stream_type ;
         $data->subject_selected = $request->subject_selected ;
@@ -160,6 +160,7 @@ class ManageCOURSESAdminController extends Controller
                     // 'publisher_email'=>'required',
                     'course_name'=>'required',
                     'type_of_course'=>'required',
+                    'course_class'=>'required',
                     'subject_selected'=>'required',
                     'course_total_price'=>'required',
                 ]) ;
@@ -170,6 +171,7 @@ class ManageCOURSESAdminController extends Controller
                 $data->course_name = $request->course_name ;
                 $data->type_of_course = $request->type_of_course ;
                 $data->board_type = $request->board_type ;
+                $data->course_class = $request->course_class ;
                 $data->medium_type = $request->medium_type ;
                 $data->stream_type = $request->stream_type ;
                 $data->subject_selected = $request->subject_selected ;

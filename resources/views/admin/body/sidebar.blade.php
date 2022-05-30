@@ -144,19 +144,35 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="header nav-small-cap text-uppercase">manage Online CLasses </li>		  
+
+
+        <li class="treeview {{ ($prefix == '/admin-online-videos')?'active':'' }}">
           <a href="#">
-            <i data-feather="mail"></i> <span>Manage Classes</span>
+            <i data-feather="mail"></i> <span>Manage Videos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Add Links</a></li>
-            <li><a href="mailbox_compose.html"><i class="ti-more"></i>add Videos</a></li>
-            <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>View</a></li>
+            <li><a href="{{ Route('admin-online-videos.add') }}"><i class="ti-more"></i>Add Videos</a></li>
+            <li><a href="{{ Route('admin-online-videos.view') }}"><i class="ti-more"></i>View Videos</a></li>
           </ul>
         </li>
+
+        {{-- <li class="treeview">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Manage Links</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="mailbox_compose.html"><i class="ti-more"></i>update Link</a></li>
+            <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>View links</a></li>
+          </ul>
+        </li> --}}
+
 
 
         

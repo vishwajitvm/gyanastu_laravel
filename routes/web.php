@@ -23,6 +23,7 @@ use App\Http\Controllers\admin\ManageSubjectController ;
 use App\Http\Controllers\admin\ManageCentersController ;
 use App\Http\Controllers\admin\ManageStreamController ;
 use App\Http\Controllers\admin\ManageCOURSESAdminController ;
+use App\Http\Controllers\admin\AdminManagesCourseVideosController ;
 //website
 use App\Http\Controllers\website\WebsiteController ;
 
@@ -258,6 +259,32 @@ Route::prefix('admin-course')->group(function() {
 //AJAX REQUEST FOR STATE CENTER DATA 
 Route::post('ajax-get-state-center-data' , [ManageCOURSESAdminController::class , 'AJAXREQUESTToGETCENTERSDATA'])->name('ajax-get-state-center-data') ; 
 
+//AJAX REQUEST COURSE NAME [ ajax-get-course-name-data ]
+Route::post('ajax-get-course-name-data' , [AdminManagesCourseVideosController::class , 'AJAXREQUESTOGETCOURSENAMEDATA'])->name('ajax-get-course-name-data') ; 
+
+
+//
+//ADMIN MANAGES or update or add ONLINE CLASS VIDEOS
+//
+Route::prefix('admin-online-videos')->group(function() {
+    //add videos
+    Route::get('/add' , [AdminManagesCourseVideosController::class , 'AddVideos'])->name('admin-online-videos.add') ; 
+
+    //store
+    Route::post('/store' , [AdminManagesCourseVideosController::class , 'StoreLectures'])->name('admin-online-videos.store') ;
+
+    //View
+    Route::get('/view' , [AdminManagesCourseVideosController::class , 'ViewLectures'])->name('admin-online-videos.view') ; 
+
+    //view datewise lectures viewdates
+    Route::get('/viewdates/{id}' , [AdminManagesCourseVideosController::class , 'ViewDateWiseLEctures'])->name('admin-online-videos.viewdates') ; 
+
+
+
+
+}) ;
+
+
 
 
 //************************************************************ *//
@@ -342,40 +369,6 @@ Route::get('/Privacy-policy' , [WebsiteController::class , 'PrivacyPolicy'])->na
 // Route::get('/storage' , function() {
 //     Artisan::Call('storage:link') ;
 // }) ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

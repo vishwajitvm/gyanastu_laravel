@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href=" {{asset('backend/images/faviconnew.png')}} ">
+    <link rel="icon" type="image/png" href="{{asset('frontend/assets/images/fav icon gyanastu.png')}}">
     <title>Gyanastu - Admin Panel</title>
     
 	<!-- Vendors Style-->
@@ -86,9 +86,6 @@
   <script src="{{asset('../assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js')}}"></script>
   <script src="{{asset('../assets/vendor_components/sweetalert/sweetalert.min.js')}}"></script>
   <script src="{{asset('backend/js/pages/steps.js')}}"></script>
-
-
-
 	
 
 	<script src="{{asset('../assets/vendor_components/datatable/datatables.min.js')}}"></script>

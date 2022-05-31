@@ -279,7 +279,20 @@ Route::prefix('admin-online-videos')->group(function() {
     //view datewise lectures viewdates
     Route::get('/viewdates/{id}' , [AdminManagesCourseVideosController::class , 'ViewDateWiseLEctures'])->name('admin-online-videos.viewdates') ; 
 
+    //View or watch lectures according to dates
+    Route::get('/lectures/{id}' , [AdminManagesCourseVideosController::class , 'VIewLecturesDatewise'])->name('admin-online-videos.lectures') ; 
 
+    //view study meterials study-material
+    Route::get('/study-material/{id}' , [AdminManagesCourseVideosController::class , 'StudyMaterialsPdfDatewise'])->name('admin-online-videos.study-material') ; 
+
+    //edit
+    Route::get('/edit/{id}' , [AdminManagesCourseVideosController::class , 'EditLectures'])->name('admin-online-videos.edit') ; 
+
+    //Update lectures data
+    Route::post('/update/{id}' , [AdminManagesCourseVideosController::class , 'UpdateLectures'])->name('admin-online-videos.update') ; 
+
+    //Delete delete
+    Route::get('/delete/{id}' , [AdminManagesCourseVideosController::class , 'DeleteLectures'])->name('admin-online-videos.delete') ; 
 
 
 }) ;

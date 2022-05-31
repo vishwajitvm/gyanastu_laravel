@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
+
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <div class="container-full">
@@ -28,30 +29,33 @@
                           <tr>
                               <th width="5%">SL</th>
                               <th>Topics Name</th>
-                              <th> Lecture Date </th>
-                              <th> Available Upto </th>
-                              <th >Action</th>
+                              <th> Videos </th>
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach ($data as $key=>$item)
                           <tr>
-                              <td> {{$key+1}}  </td>
-                              <td> {{ $item->lecture_topics }} </td>
-                              <td> <span class="bg-info px-1 py-1">{{ date('jS F Y' , strToTime($item->video_uploaded_date)) }}</span> </td>
-                              <td>  <span class="bg-danger px-1 py-1"> {{ date('jS F Y' , strToTime($item->video_availabel_upto_date)) }} </span> </td>
+                              <td> {{ +1 }}  </td>
+                              <td> {{ $data->lecture_topics }} </td>
                               <td>
-                                <a class="btn btn-primary my-2" href=" {{Route('admin-online-videos.lectures',$item->id)}}" >Watch Lectures</a>
-                                &nbsp;&nbsp;
-                                <a class="btn btn-primary my-2" href=" {{Route('admin-online-videos.study-material',$item->id)}}">View Study Materials</a>
-                                &nbsp;&nbsp;
-                                <a class="btn btn-success my-2" href=" {{Route('admin-online-videos.edit',$item->id)}}" id="edit">Edit </a>
-                                &nbsp;&nbsp;
-                                <a class="btn btn-danger my-2" href=" {{Route('admin-online-videos.delete',$item->id)}}" id="delete">Delete</a>
+                                        @php
+                                        $videoData = explode('|' , $data->leactures_videos)
+                                    @endphp
+
+                                  @foreach ($videoData as $item1)
+                                    @if ($item1 != null) 
+                                    <video width="320" height="320" controls >
+                                        <source src="{{ URL::to($item1) }}" type="video/mp4">
+                                        <source src="{{ URL::to($item1) }}" type="video/ogg">
+                                    </video> 
+                                    @else
+                                        Lecture is Not Available
+                                    @endif
+                                  @endforeach                                  
                               </td>
-                
+                              {{-- <td>
+
+                              </td> --}}
                           </tr>
-                          @endforeach
 
                       </tbody>
 

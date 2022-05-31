@@ -100,4 +100,91 @@ class AdminManagesCourseVideosController extends Controller
         $data = online_course_video::orderBy('video_uploaded_date','desc')->where('course_name_from_courses' , $id)->get() ;
         return view('backend.online_class_videos.dateview' , compact(['data'])) ;
     }
+
+    //view lectures according to datewise
+    public function VIewLecturesDatewise($id) {
+        $data = online_course_video::find($id) ;
+        return view('backend.online_class_videos.videolectures' , compact(['data'])) ;
+    }
+
+    //Study Materials
+    public function StudyMaterialsPdfDatewise($id) {
+        $data = online_course_video::find($id) ;
+        return view('backend.online_class_videos.studymeterials' , compact(['data'])) ;
+    }
+
+    //Edit Lectures
+    public function EditLectures($id) {
+        $data = online_course_video::find($id) ;
+        $coursedata = Course::all() ;
+        return view('backend.online_class_videos.edit' , compact(['data' , 'coursedata'])) ;
+    }
+
+    //Update Course lectures
+    public function UpdateLectures(Request $request,$id) {
+                //validations
+        $validation = $request->validate([
+            'classs_videos'=>'required',
+            'course_name_from_courses'=>'required',
+            'lecture_topics'=>'required',
+        ]) ;
+
+        $data = online_course_video::find($id) ;
+        $data->classs_videos = $request->classs_videos ;
+        $data->course_name_from_courses = $request->course_name_from_courses ;
+        $data->lecture_topics = $request->lecture_topics ;
+        $data->mode_of_upload = $request->mode_of_upload ;
+        //Lecture Videos [leactures_videos]
+        $leactures_videos = array() ;
+        if($multi_image_filess = $request->file('leactures_videos')) {
+            foreach($multi_image_filess as $multi_image_file) {
+                $multi_image_name = md5(rand(1000 , 10000)) ;
+                $ext = strtolower($multi_image_file->getClientOriginalExtension()) ;
+                $multi_image_full_name = $multi_image_name.'.'.$ext ;
+                $upload_path = 'upload/leactures_videos/' ;
+
+                $multi_image_url = $upload_path.$multi_image_full_name ;
+                $multi_image_file->move(public_path('upload/leactures_videos/'),$multi_image_full_name)  ;
+                $leactures_videos[] = $multi_image_url ;
+                $data->leactures_videos = implode('|' , $leactures_videos) ;
+            }
+        }
+        $data->lecture_url = $request->lecture_url ; //urls
+        //Lectures pdf file [ study_materials ]
+        $study_materials = array() ;
+        if($multi_image_filess = $request->file('study_materials')) {
+            foreach($multi_image_filess as $multi_image_file) {
+                $multi_image_name = md5(rand(1000 , 10000)) ;
+                $ext = strtolower($multi_image_file->getClientOriginalExtension()) ;
+                $multi_image_full_name = $multi_image_name.'.'.$ext ;
+                $upload_path = 'upload/study_materials/' ;
+
+                $multi_image_url = $upload_path.$multi_image_full_name ;
+                $multi_image_file->move(public_path('upload/study_materials/'),$multi_image_full_name)  ;
+                $study_materials[] = $multi_image_url ;
+                $data->study_materials = implode('|' , $study_materials) ;
+            }
+        }
+        //upload brochure end here
+        $data->video_uploaded_date = $request->video_uploaded_date ;
+        $data->video_availabel_upto_date = $request->video_availabel_upto_date ;
+        $data->lecture_status = $request->lecture_status ;
+        $data->save() ;
+        $notification = array(
+            'message' => "Successfull",
+            'alert-type' => 'success'
+        ) ;
+        return redirect()->route('admin-online-videos.view')->with($notification) ;
+    }
+
+    //Delete Lectures 
+    public function DeleteLectures($id) {
+        $user = online_course_video::find($id) ;
+        $user->delete() ;
+        $notification = array(
+            'message' => 'Lecture Deleted Successfully',
+            'alert-type' => 'info'
+        ) ;
+        return redirect()->route('admin-online-videos.view')->with($notification) ;
+    }
 }

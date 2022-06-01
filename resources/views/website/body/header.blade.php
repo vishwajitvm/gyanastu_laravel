@@ -1,6 +1,11 @@
 @php
-    // $navbardata = DB::table('mainmachines')->get() ;
-    $navbardata = DB::table('courses')->get()
+    $onlineclass = DB::table('courses')->where('mode_of_class' , 'online')->get() ;
+    $virtualclass = DB::table('courses')->where('mode_of_class' , 'virtual')->get() ;
+@endphp
+
+@php
+use App\Http\Controllers\cart\ManageCourseCartController ;
+$total = ManageCourseCartController::CartItems() ;
 @endphp
 
 <div class="navbar-area">
@@ -27,13 +32,13 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ Route('course-list') }}" class="nav-link dropdown-toggle">Courses</a>
+                            <a href="{{ Route('course-list') }}" class="nav-link dropdown-toggle">Online Courses</a>
                             <ul class="dropdown-menu">
                                 {{-- <li class="nav-item">
                                     <a href="All-courses.html" class="nav-link">Courses-1</a>
                                 </li> --}}
 
-                                @foreach ($navbardata as $navdata)
+                                @foreach ($onlineclass as $navdata)
                                     <li class="nav-item">
                                         <a href="{{ Route('course',$navdata->id) }}" class="nav-link"> {{ $navdata->course_name }} </a>
                                     </li>
@@ -42,6 +47,22 @@
 
                             </ul>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ Route('course-list-virtual') }}" class="nav-link dropdown-toggle">Virtual Courses</a>
+                            <ul class="dropdown-menu">
+                                {{-- <li class="nav-item">
+                                    <a href="All-courses.html" class="nav-link">Courses-1</a>
+                                </li> --}}
+
+                                @foreach ($virtualclass as $vir)
+                                    <li class="nav-item">
+                                        <a href="{{ Route('course',$vir->id) }}" class="nav-link"> {{ $vir->course_name }} </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{ Route('gallery') }}" class="nav-link">Gallery</a>
                         </li>
@@ -91,6 +112,14 @@
                             <button class="btn btn-outline-success ms-2 h-100" type="submit"><a
                                     href="{{ Route('register') }}">Sign up</a></button>
                         </div>
+                        <!-- cart -->
+                        <div class="cart-button"><a href="Add-to-cart.html">
+                            <i class="fas fa-cart-arrow-down"></i></a>
+                            <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $total }}
+                            </span>
+                        </div>
+                {{-- <div class="cart-button"><a href="#"><i class="fas fa-bell"></i></a></div> --}}
                         <!-- button close -->
                     </ul>
 

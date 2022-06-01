@@ -33,6 +33,7 @@
                                                 <option value="" selected="" disabled>Select Role</option>
                                                 <option value="Admin" {{ $editData->usertype == "Admin" ? "Selected": "" }} >Admin</option>
                                                 <option value="User" {{ $editData->usertype == "User" ? "Selected": "" }}  >User</option>
+                                                <option value="teacher" {{ $editData->usertype == "teacher" ? "Selected": "" }}  >teacher</option>
 
                                             </select>
                                         </div>

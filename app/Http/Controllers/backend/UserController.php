@@ -17,6 +17,15 @@ class UserController extends Controller
        return view('backend.user.view_user' , $data) ;
     }
 
+    //View all teachers
+    public function ViewAllTechers() {
+        $data['allData'] = User::latest()->where('usertype' , 'teacher')->get() ;
+        
+       return view('backend.user.view_user' , $data) ;
+
+    }
+
+
     //ADD users 
     public function UserAdd() {
         return view('backend.user.add_user') ;
@@ -67,8 +76,8 @@ class UserController extends Controller
     public function UserProfileDetailsData($id) {
         $data = User::find($id) ;
         return view('backend.user.view_userdetails' , compact('data')) ;
-
     }
+
     
 
     //edit users or update users data

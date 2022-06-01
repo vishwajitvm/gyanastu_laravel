@@ -33,7 +33,7 @@
                                                 <option value="" selected="" disabled>Select Role</option>
                                                 <option value="Admin">Admin</option>
                                                 <option value="User">Student</option>
-
+                                                <option value="teacher">Teacher</option>
                                             </select>
                                         </div>
                                     </div>
@@ -99,8 +99,8 @@
                                           <div class="controls">
                                               <select name="gender" id="gender" required  class="form-control">
                                                   <option value="" selected="" disabled>Select Gender</option>
-                                                  <option value="Male" >Male</option>
-                                                  <option value="Female"   >Female</option>
+                                                  <option value="Male">Male</option>
+                                                  <option value="Female">Female</option>
                                                   <option value="other" >other</option>
   
                                               </select>

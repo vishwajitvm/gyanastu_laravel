@@ -159,7 +159,7 @@ a.scroll-top i {
 
 .page-title-content ul li p {
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     position: relative
 }
@@ -813,8 +813,8 @@ a.scroll-top i {
     position: absolute;
     content: "";
     /* background: url(../images/home-overly.png); */
-    background: rgb(119,119,121);
-background: linear-gradient(180deg, rgba(119,119,121,0.36520274613751746) 3%, rgba(245,248,255,0.45763972092743344) 77%);
+    background: rgb(119, 119, 121);
+    background: linear-gradient(180deg, rgba(119, 119, 121, 0.36520274613751746) 3%, rgba(245, 248, 255, 0.45763972092743344) 77%);
     width: 100%;
     height: 100%;
     top: 0;
@@ -2002,10 +2002,11 @@ background: linear-gradient(180deg, rgba(119,119,121,0.36520274613751746) 3%, rg
     content: "";
     width: 100%;
     height: 100%;
-    background: url(../images/banner-overly.png);
+    /* background: url(../images/banner-overly.png); */
+    background: linear-gradient(180deg, rgba(119, 119, 121, 0.36520274613751746) 3%, rgba(245, 248, 255, 0.45763972092743344) 77%);
     left: 0;
     top: 0;
-    background-size: cover
+    /* background-size: cover */
 }
 
 .about-area {
@@ -2323,10 +2324,11 @@ background: linear-gradient(180deg, rgba(119,119,121,0.36520274613751746) 3%, rg
     content: "";
     width: 100%;
     height: 100%;
-    background: url(../images/banner-overly.png);
+    /* background: url(../images/banner-overly.png); */
+    background: linear-gradient(180deg, rgba(119, 119, 121, 0.36520274613751746) 3%, rgba(245, 248, 255, 0.45763972092743344) 77%);
     left: 0;
     top: 0;
-    background-size: cover
+    /* background-size: cover */
 }
 
 .classes {
@@ -2477,17 +2479,18 @@ background: linear-gradient(180deg, rgba(119,119,121,0.36520274613751746) 3%, rg
 
 .single-class-area .single-class .class-contnet h2 {
     font-family: playfair display, serif;
-    font-size: 24px;
+    font-size: 28px;
     color: #181818;
     font-weight: 700;
     margin-top: 20px;
-    margin-bottom: 15px
+    margin-bottom: 6px
 }
 
 .single-class-area .single-class .class-contnet p {
     color: #616161;
     padding-right: 5%;
-    line-height: 30px
+    line-height: 30px;
+   
 }
 
 .single-class-area .class-btn {
@@ -2569,7 +2572,8 @@ background: linear-gradient(180deg, rgba(119,119,121,0.36520274613751746) 3%, rg
     font-size: 24px;
     color: #121232;
     font-weight: 500;
-    margin-bottom: 6px
+    margin-bottom: 6px;
+    margin-top: 10px;
 }
 
 .single-class-area .class-content-right .class-list {

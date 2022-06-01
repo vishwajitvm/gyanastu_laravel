@@ -188,3 +188,46 @@ font-size: 14px !important;
 .footer-left .logo img{
 width: 80%;
 }
+
+
+/* Cart button */
+.cart-button{
+    padding-top: 13px;
+    margin-left: 20px;
+}
+.cart-button a {
+        color: black;
+}
+.cart-button a:hover{
+    color: #0f72e5;
+}
+
+.cart-button a i{
+    font-size: 35px;
+}
+
+
+
+/* courses deatial page */
+.single-class-area .single-class .class-content h2{
+    font-family: playfair display, serif;
+    font-size: 30px;
+    color: #181818;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+.single-class-area .single-class .class-contnet  .calender {
+    font-size: 13px;
+}
+
+/* sample vedio */
+.sample-vedios .single-home-content h2{
+    font-size: 20px;
+    margin-top: 10px;
+    font-family: playfair display, serif;
+
+}
+.sample-vedios .single-home-content .calender{
+    font-size: 12px;
+}

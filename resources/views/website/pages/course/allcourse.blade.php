@@ -1,17 +1,36 @@
 @extends('website.indexmaster')
 @section('website')
 
+@php
+    $prefix = Request::route()->getprefix() ;
+    $route = Route::current()->getName() ;
+    
+@endphp
+
+
 <div class="banner-area special-class">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
                 <div class="page-title-content">
-                    <h2>Special Class</h2>
+                    <h2>
+                        @if ($route == 'course-list')
+                            All Online Courses
+                        @else
+                            All Virtual Courses
+                        @endif
+                    </h2>
                     <ul>
                         <li>
                             <a href="index.html"> Home </a>
                             <i class="flaticon-fast-forward"></i>
-                            <p class="active">Special Courses</p>
+                            <p class="active">
+                                @if ($route == 'course-list')
+                                    Online Courses
+                                @else
+                                    Virtual Courses
+                                @endif
+                            </p>
                     </ul>
                 </div>
             </div>
@@ -24,7 +43,14 @@
 <section class="home-news pb-100 pt-100">
     <div class="container">
         <div class="section-tittle text-center">
-            <h2>All Courses</h2>
+            <h2>
+                @if ($route == 'course-list')
+                All Online Courses
+            @else
+                All Virtual Courses
+            @endif
+
+            </h2>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
@@ -66,11 +92,20 @@
                             <hr>
                         </a>
                             <!-- <a href="Courses-details.html" class="line-bnt mt-4">Read More <i class="flaticon-next"></i></a> -->
-                            <div class="row mt-4 justify-content-between">
-                                <div class="col-sm-4 price-box "><a href="{{ Route('course' , $item->id ) }}"
-                                        class="fs-5 text-center  text-white">₹{{$item->course_total_price}}</a></div>
-                                <div class="col-sm-5 read-more text-end"><a href="{{ Route('course' , $item->id ) }}" class=" mt-2">Read
-                                        More </i></a></div>
+                            <div class="row mt-4  justify-content-between">
+                                <div class="col-sm-7">
+                                    <form action="/add-to-cart" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="course_id" value="{{ $item->id }}">
+                                        <button class="btn btn-danger  border border-dark">
+                                            <i class="fas fa-cart-plus"></i> Rs.{{$item->course_total_price}}
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="col-sm-5  read-more text-end">
+                                    <a href="{{ Route('course' , $item->id ) }}" class="mt-2">Read More </i></a>
+                                </div>
                             </div>
 
                     </div>

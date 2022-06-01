@@ -26,6 +26,8 @@ use App\Http\Controllers\admin\ManageCOURSESAdminController ;
 use App\Http\Controllers\admin\AdminManagesCourseVideosController ;
 //website
 use App\Http\Controllers\website\WebsiteController ;
+//cart
+use App\Http\Controllers\cart\ManageCourseCartController ;
 
 
 /*
@@ -111,6 +113,10 @@ Route::prefix('users')->group(function() {
     
     //manage inacive users
     Route::get('/inactiveusers' , [UserController::class , 'UserInactiveUsers'])->name('user.inactiveusers') ; 
+
+    //View all Techers
+    Route::get('/allteachers' , [UserController::class , 'ViewAllTechers'])->name('user.allteachers') ; 
+
 
     //view user approve page here
     Route::get('/userapprove/{id}' , [UserController::class , 'UserApprovalRequestPageView'])->name('users.userapprove') ;   
@@ -354,6 +360,9 @@ Route::get('/contact-us' , [WebsiteController::class , 'ContactUs'])->name('cont
 //course list course-list
 Route::get('/course-list' , [WebsiteController::class , 'CourseList'])->name('course-list') ;
 
+//Course List Virtual
+Route::get('/course-list-virtual' , [WebsiteController::class , 'CourseListVirtual'])->name('course-list-virtual') ;
+
 //single course course
 Route::get('/course/{id}' , [WebsiteController::class , 'SingleCourse'])->name('course') ;
 
@@ -371,6 +380,12 @@ Route::get('/terms-and-condition' , [WebsiteController::class , 'TermsAndConditi
 
 //privacy policy Privacy-policy
 Route::get('/Privacy-policy' , [WebsiteController::class , 'PrivacyPolicy'])->name('Privacy-policy') ;
+
+
+//**********************************
+//add-to-cart
+//**********************************
+Route::post('/add-to-cart' , [ManageCourseCartController::class , 'AddToCart'])->name('add-to-cart') ;
 
 
 

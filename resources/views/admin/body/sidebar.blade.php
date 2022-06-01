@@ -33,15 +33,18 @@
         <li class="treeview {{ ($prefix == '/users')?'active':'' }} " >
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Manage Students</span>
+            <span>Studens And Teacher</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('users.add') }} "><i class="ti-more"></i>Add Student</a></li>
-            <li><a href="{{route('user.view')}} "><i class="ti-more"></i>View Students</a></li>
+            <li><a href="{{ route('users.add') }} "><i class="ti-more"></i>Add</a></li>
+            <li><a href="{{route('user.view')}} "><i class="ti-more"></i>View </a></li>
+            <li> <a href=" {{ Route('user.allteachers') }} "><i class="ti-more"></i> View All Teacher </a> </li>
+            <li> <a href=" {{ Route('user.inactiveusers') }} "><i class="ti-more"></i> View All students  </a> </li>
             <li> <a href=" {{ Route('user.inactiveusers') }} "><i class="ti-more"></i> Inactive User </a> </li>
+
 
           </ul>
         </li> 

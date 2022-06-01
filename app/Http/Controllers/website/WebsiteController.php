@@ -45,10 +45,17 @@ class WebsiteController extends Controller
         return view('website.pages.contactus') ;
     }
 
-    //Course List
+    //Course List online
     public function CourseList() {
-        $data = Course::all()->where('course_status' , 'active') ;
+        $data = Course::all()->where('mode_of_class' , 'online')->where('course_status' , 'active') ;
         return view('website.pages.course.allcourse' , compact(['data'])) ;
+    }
+
+    //Course lIst Virtual Clases
+    public function CourseListVirtual() {
+        $data = Course::all()->where('mode_of_class' , 'virtual')->where('course_status' , 'active') ;
+        return view('website.pages.course.allcourse' , compact(['data'])) ;
+
     }
 
     //single course

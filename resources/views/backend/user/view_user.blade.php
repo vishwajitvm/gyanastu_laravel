@@ -30,7 +30,7 @@
                               <th>Role</th>
                               <th>Name</th>
                               <th>Email</th>
-                              <th> User Status </th>
+                              {{-- <th> User Status </th> --}}
                               <th width="15%"> User Request Status </th>
                               <th >Action</th>
                           </tr>
@@ -42,7 +42,7 @@
                               <td> {{$user->usertype}} </td>
                               <td> {{$user->name}} </td>
                               <td> {{$user->email}} </td>
-                              <td  style="{{($user->status =='active')?'color:green':'color:red' }} ; font-size:18px"> {{$user->status}} </td>
+                              {{-- <td  style="{{($user->status =='active')?'color:green':'color:red' }} ; font-size:18px"> {{$user->status}} </td> --}}
                               {{-- <td style="{{($user->usertype ==null)?'color:white;background:red':'color:white;background:green' }} ; font-size:18px" > {{ $user->usertype== null?" Not Approved ": "Approved" }} </td> --}}
 
                               <td>
